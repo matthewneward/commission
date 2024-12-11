@@ -1,0 +1,28 @@
+html {
+    height: 100%;
+    width: 100%;
+}
+body {
+    background-color: black;
+    background-image: url(../images/hal-9000.jpg); 
+    max-height:100%;
+    max-width: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+h1 {
+    font-family: sans-serif;
+    color:rgb(105, 60, 231);
+    text-shadow: 3px 3px 3px #3f04027e;
+    font-style:oblique;
+    text-align: center;
+}
+
+p{
+font-family: sans-serif;
+color:rgb(226, 235, 103);
+text-shadow: 3px 3px 3px #acf2ee;
+font-style:oblique;
+}

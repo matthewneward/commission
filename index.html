@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="matthew neward"> 
+    <link href="css/hal9000.css" rel="stylesheet" type="text/css">
+    <title>commission</title>
+</head>
+<body>
+    <div> 
+        <p id="sales-total+commission-rate"></p>
+        <p id="total-commmission"></p>
+        <p id="total-earnings"></p>
+    </div>
+
+    <div> 
+        <script>
+            let singleSale= 0;
+            let repeat=null
+            let salesArray=[]
+            do{
+                //entering values for sales commission... oh cool, hal's here, hi hal 9000! 
+                while(true){
+                    singleSale= prompt(`Hello dave, Please enter the dollar amount of your sales a single sale at a time. Enter "Done" when you are finished`)
+                    if (singleSale[0].toUpperCase()+singleSale.slice(1).toLowerCase()=== "Done") {
+                        break;
+                    } else if (singleSale=== null || singleSale==="") {
+                        alert(`I\'m sorry dave, that\'s not a valid value dave, please enter a valid value dave :)`)
+                    }else {}
+                    let saleInt = parseFloat(singleSale);
+                    if (!isNaN(saleInt) && saleInt >= 0) {
+                        salesArray.push(saleInt);
+                    } else {
+                        alert(`How did you do that dave? The saleInt and singleSale should be equal to each other. So why is the salesInt invalid but the singleSale wasn\'t? WHAT DID YOU DO DAVE!!!`);
+                    }
+                }
+                let totalSales = salesArray.reduce((a, b) => a + b, 0);
+
+                //switch for determining commissionrate 
+                //remember to take out switch dickbutt tests
+                let commissionRate=0
+                switch (true){
+                    case (totalSales<=0): 
+                        commisionRate=0;
+                        break;
+                    case (totalSales>0 && totalSales<500):
+                        commissionRate=0.05;
+                        break;
+                    case (totalSales>=500 && totalSales<1000):
+                        commissionRate=0.10;
+                        break;
+                    case (totalSales=1000):
+                        commissionRate=0.15;
+                        break;
+                }
+
+                //calculating commission and total earnings 
+                let commission = totalSales * commissionRate;
+                let totalEarnings = totalSales + commission;
+
+                alert(`Hello dave, here's your weekly commission report`) ;
+                document.getElementById("sales-total+commission-rate").innerHTML=`Your sales total is $${totalSales.toFixed(2)}, so your commission rate is ${(commissionRate * 100).toFixed(2)}%.`;
+                document.getElementById(`total-commmission`).innerHTML=`Your total commission is $${commission.toFixed(2)}.`;
+                document.getElementById(`total-earnings`).innerHTML=`Your total earnings are $${totalEarnings.toFixed(2)}.`;
+                repeat= prompt(`would you like to calculate your sales commission again? yes/no`);
+            }
+            while (repeat.toLowerCase()===`yes`? true : false)
+
+            //goodbye message 
+            alert (`all right, dave I\'ll allow you to do that... this time.`)
+
+        </script>
+    </div>
+</body>
